@@ -1,0 +1,82 @@
+\begin{frame}{この章の気持ち}
+ \begin{itemize}
+  \item 確率論は2つの単純な等式から成り立っている
+        \begin{itemize}
+         \item 加法定理
+         \item 乗法定理
+               %TODO 加法定理と乗法定理の式を載せる
+        \end{itemize}
+  \item → どんなに複雑な確率的推論・学習方法も、これらによって分解することができる
+  \item そこでグラフィカルモデルですよ
+        \begin{enumerate}
+         \item 確率モデル構造を視覚化できるので、新しいモデルの設計方針を決めるのに役立つ
+         \item グラフの構造を調べることにより、条件付き独立性(8.2章)などのモデルの性質に関する知見が得られる
+         \item 学習や推論のための計算をグラフ上の操作として表現できる
+        \end{enumerate}
+ \end{itemize}
+\end{frame}
+
+\begin{frame}{ことば}
+ %TODO 分かりやすい図の挿入
+ \begin{itemize}
+  \item リンク
+  \item ノード
+  \item ベイジアンネットワーク(有向グラフィカルモデル)
+  \item マルコフ確率場(無向グラフィカルモデル)
+ \end{itemize}
+\end{frame}
+
+\begin{frame}{ベイジアンネットワーク}
+ \begin{itemize}
+  \item グラフィカルモデル: 広い確率分布のクラスをグラフで記述できる
+ \end{itemize}
+ \begin{eqnarray*}
+  p(a,b,c) &=& p(c|a,b)p(a,b) \\
+  & =& p(c|a,b)p(b|a)p(a)
+ \end{eqnarray*}
+ \begin{itemize}
+  \item このような分解は、任意の同時分布に対して常に可能
+  \item 左辺は$a,b,c$対称だが、右辺は対称でないことに注意
+ \end{itemize}
+ %TODO 親ノード、子ノード、図の追加
+\end{frame}
+
+\begin{frame}{$K$変数の場合}
+ % \begin{itemize}
+ %  \item $K$変数の同時分布$p(x_1,...x_K)$の場合を考える
+   % \end{itemize}
+ \begin{eqnarray}
+  p(x_1,...,x_K) = p(x_K|x_1,...,x_{K-1})\dots p(x_2|x_1)p(x_1)\label{164842_7Feb15}
+ \end{eqnarray}
+ \begin{itemize}
+  \item $K$の値を決めれば、この同時分布は$K$個のノードを持つ有向グラフとして表現される
+  \item 各ノードは式(\ref{164842_7Feb15})の右辺の因子のうちの1つの条件付き分布に対応
+  \item 各ノードは自分よりも小さい番号が振られたすべてのノードから向かってくるリンクを持つ
+  \item 全結合
+ \end{itemize}
+ %TODO K変数のときの図?
+\end{frame}
+
+\begin{frame}{例}
+ %TODO 図8.2の挿入
+ \begin{itemize}
+  \item 例
+ \end{itemize}
+ \begin{eqnarray*}
+  p(x_1)p(x_2)p(x_3)p(x_4|x_1,x_2,x_3)p(x_5|x_1,x_3)p(x_6)p(x_4)p(x_7|x_4,x_5)
+ \end{eqnarray*}
+ \begin{itemize}
+  \item $K$個のノードを持つグラフに対応する同時分布は次の式で与えられる。ここで、$pa_k$は$x_k$の親ノード集合
+ \end{itemize}
+ \begin{eqnarray*}
+  p(\bm{x}) = \prod_{k=1}^{K}p(x_k|pa_k)
+ \end{eqnarray*}
+\end{frame}
+
+\begin{frame}{説明}
+ \begin{itemize}
+  \item
+ \end{itemize}
+ %TODO 演8.1,8.2を解いてスライドに入れる
+ %TODO 菅原さんの資料を確認すること
+\end{frame}
