@@ -1,0 +1,31 @@
+\begin{frame}{条件付き独立性}
+ \begin{itemize}
+  \item 3変数$a,b,c$に対し、$b$および$c$が与えられたとき、$a$の条件付き分布が$b$の値に依存しないとする。すなわち、
+ \end{itemize}
+ \begin{eqnarray*}
+  p(a|b,c) = p(a|c)
+ \end{eqnarray*}
+ \begin{itemize}
+  \item このとき、$c$が与えられた下で、$a$は$b$に対して条件付き独立である
+
+  \item $c$で条件付けられた$a$および$b$の同時分布について考えると、条件付き独立性は次のように表現される
+ \end{itemize}
+ \begin{eqnarray*}
+  p(a,b|c) &=& p(a|b,c)p(b|c)\\
+  &= & p(a|c)p(b|c)
+ \end{eqnarray*}
+\end{frame}
+
+\begin{frame}{注意}
+ \begin{itemize}
+  \item 条件付き独立性の定義は、$c$がある特定の値をとったときだけでなく、$c$の取り得るすべての可能な値に対して前述の式が成り立つことである
+  \item 条件き独立は次のように表すこともある
+        \begin{eqnarray*}
+         a \Perp b \ | \ c
+        \end{eqnarray*}
+        \begin{itemize}
+         \item $c$が与えられたとき、$a$が$b$に対して条件付き独立
+        \end{itemize}
+  % \item %TODO P85の説明を入れる?
+ \end{itemize}
+\end{frame}
