@@ -1,14 +1,14 @@
-\begin{frame}{$B>r7oIU$-FHN)@-(B}
+\begin{frame}{条件付き独立性}
  \begin{itemize}
-  \item 3$BJQ?t(B$a,b,c$$B$KBP$7!"(B$b$$B$*$h$S(B$c$$B$,M?$($i$l$?$H$-!"(B$a$$B$N>r7oIU$-J,I[$,(B$b$$B$NCM$K0MB8$7$J$$$H$9$k!#$9$J$o$A!"(B
+  \item 3変数$a,b,c$に対し、$b$および$c$が与えられたとき、$a$の条件付き分布が$b$の値に依存しないとする。すなわち、
  \end{itemize}
  \begin{eqnarray*}
   p(a|b,c) = p(a|c)
  \end{eqnarray*}
  \begin{itemize}
-  \item $B$3$N$H$-!"(B$c$$B$,M?$($i$l$?2<$G!"(B$a$$B$O(B$b$$B$KBP$7$F>r7oIU$-FHN)$G$"$k(B
+  \item このとき、$c$が与えられた下で、$a$は$b$に対して条件付き独立である
 
-  \item $c$$B$G>r7oIU$1$i$l$?(B$a$$B$*$h$S(B$b$$B$NF1;~J,I[$K$D$$$F9M$($k$H!">r7oIU$-FHN)@-$O<!$N$h$&$KI=8=$5$l$k(B
+  \item $c$で条件付けられた$a$および$b$の同時分布について考えると、条件付き独立性は次のように表現される
  \end{itemize}
  \begin{eqnarray*}
   p(a,b|c) &=& p(a|b,c)p(b|c)\\
@@ -16,16 +16,16 @@
  \end{eqnarray*}
 \end{frame}
 
-\begin{frame}{$BCm0U(B}
+\begin{frame}{注意}
  \begin{itemize}
-  \item $B>r7oIU$-FHN)@-$NDj5A$O!"(B$c$$B$,$"$kFCDj$NCM$r$H$C$?$H$-$@$1$G$J$/!"(B$c$$B$N<h$jF@$k$9$Y$F$N2DG=$JCM$KBP$7$FA0=R$N<0$,@.$jN)$D$3$H$G$"$k(B
-  \item $B>r7o$-FHN)$O<!$N$h$&$KI=$9$3$H$b$"$k(B
+  \item 条件付き独立性の定義は、$c$がある特定の値をとったときだけでなく、$c$の取り得るすべての可能な値に対して前述の式が成り立つことである
+  \item 条件き独立は次のように表すこともある
         \begin{eqnarray*}
          a \Perp b \ | \ c
         \end{eqnarray*}
         \begin{itemize}
-         \item $c$$B$,M?$($i$l$?$H$-!"(B$a$$B$,(B$b$$B$KBP$7$F>r7oIU$-FHN)(B
+         \item $c$が与えられたとき、$a$が$b$に対して条件付き独立
         \end{itemize}
-  % \item %TODO P85$B$N@bL@$rF~$l$k(B?
+  % \item %TODO P85の説明を入れる?
  \end{itemize}
 \end{frame}
