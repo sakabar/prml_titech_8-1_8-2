@@ -1,0 +1,128 @@
+\begin{frame}{3つのグラフの例}
+ \begin{itemize}
+  \item 有向グラフの条件付き独立性を考えるため、ノードを3つだけ持つ簡単な3種類のグラフについて考える %TODO 図8.15
+        \begin{itemize}
+         \item tail-to-tail 型
+         \item head-to-tail 型
+         \item head-to-head 型
+        \end{itemize}
+ \end{itemize}
+\end{frame}
+
+\begin{frame}{tail-to-tail型}
+ %TODO 図8.15の挿入
+ \begin{itemize}
+  \item このグラフに対応する同時分布は以下の式で表される
+        \begin{eqnarray*}
+         p(a,b,c) = p(a|c)p(b|c)p(c)
+        \end{eqnarray*}
+  \item どの変数も観測されていないとすると、$a$と$b$が独立かどうかは両辺を$c$に関して周辺化すれば調べられる
+        \begin{eqnarray*}
+         p(a,b) = \sum_c p(a|c)p(b|c)p(c)
+        \end{eqnarray*}
+  \item この式は一般には積$p(a)p(b)$には分解できないので、
+        \begin{eqnarray*}
+         a \nPerp\ b \ | \ \emptyset
+        \end{eqnarray*}
+ \end{itemize}
+\end{frame}
+
+\begin{frame}{tail-to-tail型}
+ \begin{itemize}
+  \item 一方、変数$c$で条件付けてみると、
+        \begin{eqnarray*}
+         p(a,b|c) &=& \frac{p(a,b,c)}{p(c)}\\
+         &= & p(a|c)p(b|c)
+        \end{eqnarray*}
+        これより、条件付き独立性
+        \begin{eqnarray*}
+         a \Perp b \ | \ c
+        \end{eqnarray*}
+        が導出された
+  \item ノード$c$を経由する、ノード$a$からノード$b$までの経路を考えれば、この結果をグラフ上で簡潔に説明できる。
+  \item ノード$c$はこの経路に関して\alert{tail-to-tail}であると言われる
+  \item ノード$a$と$b$とを結ぶこのような経路が存在すると$a$と$b$は独立にはならない。しかし、図のようにノード$c$に関して条件付ければ、この条件付きノードは$a$から$b$への経路を遮断して$a$と$b$とを(条件付き)独立にする
+ \end{itemize}
+\end{frame}
+
+\begin{frame}{head-to-tail型}
+ \begin{eqnarray*}
+  p(a,b,c) = p(a)p(c|a)p(b|c)
+ \end{eqnarray*}
+ \begin{itemize}
+  \item まず、$c$に関して周辺化することにより$a$と$b$の独立性を調べる
+        \begin{eqnarray*}
+         p(a,b) = p(a)\sum_c p(c|a)p(b|c) = p(a)p(b|a)
+        \end{eqnarray*}
+        この式は一般に$p(a)p(b)$の形に因数分解できないため、前の例と同様に
+        \begin{eqnarray*}
+         a \nPerp \ b | \emptyset
+        \end{eqnarray*}
+        が言える
+ \end{itemize}
+\end{frame}
+
+\begin{frame}{head-to-tail型}
+ \begin{itemize}
+  \item 次に、ノード$c$で条件付けると
+        \begin{eqnarray*}
+         p(a,b|c) &=& \frac{p(a,b,c)}{p(c)}\\
+         & =& \frac{p(a)p(c|a)p(b|c)}{p(c)}\\
+         &= & \frac{p(c,a)p(b|c)}{p(c)}\\
+         &= & p(a|c)p(b|c)
+        \end{eqnarray*}
+        が得られ、この場合にも条件付き独立性
+        \begin{eqnarray*}
+         a \Perp b | c
+        \end{eqnarray*}
+        が導かれる
+  \item これらの結果をグラフ上で説明できる。ノード$c$はノード$a$からノード$b$への経路に関して\alert{head-to-tail}である
+  \item このような経路はノード$a$とノード$b$をつないで従属関係をもたらす
+  \item しかし、ノード$c$を観測すると、$a$から$b$への経路を遮断し、条件付き独立性$a \Perp b | c$が成立する つ成立する
+ \end{itemize}
+\end{frame}
+
+\begin{frame}{head-to-head}
+ \begin{itemize}
+  \item 最後に、第3の例について考える
+        \begin{eqnarray*}
+         p(a,b,c) = p(a)p(b)p(c|a,b)
+        \end{eqnarray*}
+        $c$に関して周辺化すると、
+        \begin{eqnarray*}
+         p(a,b) &=& \sum_{c}p(a)p(b)p(c|a,b)\\
+         & & p(a)p(b)
+        \end{eqnarray*}
+        を得る。よって先の2例とは異なり、どの変数も観測されていないとき$a$と$b$とが独立であることがわかる。この結果を$a \Perp b | \emptyset$と書く
+  \item 次に、$c$で条件付けられたときは、
+        \begin{eqnarray*}
+         p(a,b|c) &=& \frac{p(a,b,c)}{p(c)}\\
+         &= & \frac{p(a)p(b)p(c|a,b)}{p(c)}
+        \end{eqnarray*}
+        これは一般に積$p(a|c)p(b|c)$の形に因数分解できないため、$a \nPerp \ b \ | \ c$である
+  \item このように、第3の例は先の2例とは反対の振る舞いをする
+  \item ノード$c$は$a$から$b$への経路に関して\alert{head-to-head}であると言われる
+  \item ノード$c$が観測されていないとき、このノードは経路を遮断して変数$a$と$b$とを独立にする
+  \item しかし$c$に関する条件付けにより、経路の遮断が解かれて、$a$と$b$の間に依存関係がもたらされる
+  \item もしもhead-to-headノードか、あるいはその子孫のいずれかが観測されれば、この経路の遮断は解かれる(演9.10)
+ \end{itemize}
+\end{frame}
+
+\begin{frame}{head-to-head}
+ \begin{itemize}
+  \item
+ \end{itemize}
+\end{frame}
+
+\begin{frame}{まとめ}
+ \begin{itemize}
+  \item tail-to-tailまたはhead-to-tail: 観測されていないときには経路を遮断せず、観測されると遮断する
+  \item head-to-headノードは観測されていないとき経路を遮断し、そのノードかあるいはその子孫のうち少なくとも1つが観測されたとき経路の遮断が解かれる
+ \end{itemize}
+\end{frame}
+
+\begin{frame}{弁明現象}
+ \begin{itemize}
+  \item 例を入れて話すかー?
+ \end{itemize}
+\end{frame}

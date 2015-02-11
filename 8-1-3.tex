@@ -1,0 +1,76 @@
+\begin{frame}{離散変数}
+ \begin{itemize}
+  \item 指数型分布族(2.4節)は複雑な確率分布を構築するための基本構成要素として利用される
+  \item グラフィカルモデルは、これらの構成要素がどのように接続されているかを表現するための便利な枠組みを提供する
+  \item 有向グラフの親子対が共役関係(同じような分布)になるように分布を選べば、そのモデルは非常に良い性質を持つ
+        \begin{itemize}
+         \item 特に親ノードと子ノードが共に\alert{離散変数}
+         \item または、親ノードと子ノードが共に\alert{ガウス変数}
+        \end{itemize}
+ \end{itemize}
+\end{frame}
+
+\begin{frame}{離散変数}
+ \begin{itemize}
+  \item $K$状態離散変数$x$を1-of-$K$表現を用いて表現する
+  \item 確率分布$p(\bm{x}|\bm{\mu})$は
+ \end{itemize}
+ \begin{eqnarray*}
+  p(\bm{x}|\bm{\mu}) = \prod_{k=1}^{K}\mu_k^{x_k}
+ \end{eqnarray*}
+ で与えられ、パラメータ$\bm{\mu}=(\mu_1,...,\mu_K)^{\mathrm{T}}$によって支配される
+ \begin{itemize}
+  \item 次に、2つの$K$状態離散変数$x_1,x_2$があるとし、これらの同時分布をモデル化することを考える
+ \end{itemize}
+ \begin{eqnarray*}
+  p(\bm{x_1},\bm{x_2}|\mu) = \prod_{k=1}^{K}\prod_{l=1}^{K}\mu_{kl}^{x_{1k}x_{2l}}
+ \end{eqnarray*}
+ \begin{itemize}
+  \item この分布は$K^2-1$個のパラメータに支配される
+  \item 変数が2でなく$M$個のときは、$K^M-1$個のパラメータ
+        \begin{itemize}
+         \item \structure{指数オーダーorz}
+        \end{itemize}
+ \end{itemize}
+\end{frame}
+
+\begin{frame}{リンクを仮定した時(いるか?)}
+ \begin{itemize}
+  \item %TODO 乗法定理を使った部分入れるか?
+  % \item 同時分布を$p(\bm{x_1},\bm{x_2}) = p(\bm{x_2}| \bm{x_1})p(\bm{x_1})$の形に因数分解すると、パラメータの総数は
+ \end{itemize}
+\end{frame}
+
+\begin{frame}{どうするのか?}
+ \begin{itemize}
+  \item グラフに制約を加えることで、パラメータ数を減らす
+  \item 変数$\bm{x_1}, \bm{x_2}$が独立であると仮定すると、全パラメータ数は$2(K-1)$である
+        \begin{itemize}
+         \item この場合、$\bm{x_1}$と$\bm{x_2}$を結ぶリンクが除去されたことになる
+        \end{itemize}
+  \item 一般に、$M$個の独立な$K$状態離散変数上の分布の場合、全パラメータ数は$M(K-1)$
+        \begin{itemize}
+         \item \alert{線形オーダになった!}
+        \end{itemize}
+  \item ただし、この操作によって表現可能な分布のクラスは制限される
+ \end{itemize}
+\end{frame}
+
+\begin{frame}{チェイン}
+ \begin{itemize}
+  \item %TODO 図8.10の挿入
+ \end{itemize}
+\end{frame}
+
+\begin{frame}{パラメータの共有(結合)}
+ \begin{itemize}
+  \item %TODO 図8.11と図8.12の挿入
+ \end{itemize}
+\end{frame}
+
+\begin{frame}{パラメトリックモデルの利用}
+ \begin{itemize}
+  \item %TODO 式8.10あたりか?
+ \end{itemize}
+\end{frame}
+

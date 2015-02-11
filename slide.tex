@@ -1,0 +1,89 @@
+\documentclass[dvipdfm, t]{beamer}
+% \usepackage{amsmath}
+\usepackage{bm}
+\usepackage{txfonts}
+% \usepackage{graphicx}
+% \usepackage{hyperref}
+% \usepackage{url}
+
+%条件付き独立でない、という記号
+\newcommand{\nPerp}{\Perp\hspace{-.95em}/}
+
+%%ナビゲーションシンボルを表示しない
+%%dvipdfmでは動かないため
+\setbeamertemplate{navigation symbols}{}
+
+\renewcommand{\kanjifamilydefault}{\gtdefault} % 和文既定をゴシックに変更
+
+\title{PRML\_titech 8.1 - 8.2}
+\author{榊原隆文(@saka\_bar)}
+% \date{February 26, 2015}
+\date{\today}
+
+\setbeamertemplate{footline}[frame number]
+\setbeamerfont{footline}{size=\small,series=\bfseries}
+\setbeamercolor{footline}{fg=black,bg=black}
+
+%数式をTeXの元々のフォントにする
+\usefonttheme{professionalfonts}
+
+\begin{document}
+\maketitle
+
+ \section*{自己紹介}
+ \input{introduce}
+
+ \begin{frame}{もくじ}
+  \tableofcontents
+ \end{frame}
+
+ \section{8.1 ベイジアンネットワーク}
+ %currentsectionオプションを指定することで、現在のセクションのみを強調表示することができる
+ \begin{frame}{もくじ}
+  \tableofcontents[currentsection]
+ \end{frame}
+ \input{8-1}
+
+ \section{8.1.1 例:多項式曲線フィッティング}
+ \begin{frame}{もくじ}
+  \tableofcontents[currentsection]
+ \end{frame}
+ \input{8-1-1}
+
+ \section{8.1.2 生成モデル}
+ \begin{frame}{もくじ}
+  \tableofcontents[currentsection]
+ \end{frame}
+ \input{8-1-2}
+
+ \section{8.1.3 離散変数}
+ \begin{frame}{もくじ}
+  \tableofcontents[currentsection]
+ \end{frame}
+ \input{8-1-3}
+
+ \section{8.1.4 線形ガウスモデル}
+ \begin{frame}{もくじ}
+  \tableofcontents[currentsection]
+ \end{frame}
+ \input{8-1-4}
+
+ \section{8.2 条件付き独立性}
+ \begin{frame}{もくじ}
+  \tableofcontents[currentsection]
+ \end{frame}
+ \input{8-2}
+
+ \section{8.2.1 3つのグラフの例}
+ \begin{frame}{もくじ}
+  \tableofcontents[currentsection]
+ \end{frame}
+ \input{8-2-1}
+
+ \section{8.2.2 有向分離(D分離)}
+ \begin{frame}{もくじ}
+  \tableofcontents[currentsection]
+ \end{frame}
+ \input{8-2-2}
+
+\end{document}
