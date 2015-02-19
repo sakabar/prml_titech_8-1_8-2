@@ -95,14 +95,16 @@
  \end{frame}
 
  \begin{frame}{パラメトリックモデルの利用}
+  \begin{center}
+   \includegraphics[width=4cm]{./figure/Figure8.13.eps}
+  \end{center}
   \begin{itemize}
-   \item %TODO 式8.10あたりか?
+   \item 親ノードの持つパラメータ数は$M$
+   \item 条件付き分布$p(y=1|x_1,...,x_M)$については、必要なパラメータ数は$2^M$
+   \item 親変数の線形結合を入力とするロジスティックシグモイド関数を用いれば、効率的に条件付き分布を記述できる
   \end{itemize}
   \begin{eqnarray*}
    p(y=1|x_1,...,x_M) = \sigma \left( w_0 + \sum_{i=1}^{M}w_ix_i\right) = \sigma (\bm{w}^{\mathrm{T}}\bm{x})
   \end{eqnarray*}
-  \begin{center}
-   \includegraphics[width=6cm]{./figure/Figure8.13.eps}
-  \end{center}
  \end{frame}
 
