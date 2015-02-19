@@ -20,13 +20,16 @@
 \end{frame}
 
 \begin{frame}{ことば}
- \includegraphics[width=5cm]{./figure/Figure8.1.eps}
- \includegraphics[width=5cm]{./figure/Figure8.26.eps}
  \begin{itemize}
   \item リンク
   \item ノード
   \item ベイジアンネットワーク(有向グラフィカルモデル)
+
+        \includegraphics[width=3cm]{./figure/Figure8.1.eps}
+
   \item マルコフ確率場(無向グラフィカルモデル)
+
+        \includegraphics[width=4cm]{./figure/Figure8.27.eps}
  \end{itemize}
 \end{frame}
 
@@ -43,7 +46,7 @@
   \item 左辺は$a,b,c$対称だが、右辺は対称でないことに注意
  \end{itemize}
  \begin{center}
-  \includegraphics[width=5cm]{./figure/Figure8.1.eps}
+  \includegraphics[width=4cm]{./figure/Figure8.1.eps}
  \end{center}
 \end{frame}
 
@@ -65,7 +68,7 @@
 
 \begin{frame}{同時確率分布を条件付き分布の積で表す}
  \begin{eqnarray*}
-  p(x_1)p(x_2)p(x_3)p(x_4|x_1,x_2,x_3)p(x_5|x_1,x_3)p(x_6)p(x_4)p(x_7|x_4,x_5)
+  p(x_1)p(x_2)p(x_3)p(x_4|x_1,x_2,x_3)p(x_5|x_1,x_3)p(x_6|x_4)p(x_7|x_4,x_5)
  \end{eqnarray*}
  \begin{center}
   \includegraphics[width=3cm]{./figure/Figure8.2.eps}
@@ -79,12 +82,18 @@
 \end{frame}
 
 \begin{frame}{説明}
+ \begin{eqnarray*}
+  p(x_1)p(x_2)p(x_3)p(x_4|x_1,x_2,x_3)p(x_5|x_1,x_3)p(x_6|x_4)p(x_7|x_4,x_5)
+ \end{eqnarray*}
+ \begin{center}
+  \includegraphics[width=3cm]{./figure/Figure8.2.eps}
+ \end{center}
  % \begin{eqnarray*}
  %  p(\bm{x}) = \prod_{k=1}^{K}p(x_k|pa_k)
    % \end{eqnarray*}
  \begin{itemize}
-  \item この等式は、与えられた有向グラフィカルモデルに対応する同時分布の分解特性を表現
-  \item 各ノードは1つの変数だけでなく、変数集合やベクトル値変数を表現させることも可
+  % \item この等式は、与えられた有向グラフィカルモデルに対応する同時分布の分解特性を表現
+  % \item 各ノードは1つの変数だけでなく、変数集合やベクトル値変数を表現させることも可
   \item ここでの有向グラフは有向閉路を持たないという制約を満たす(有向非循環グラフ, DAG)
   \item 有向閉路を持たないことと、大きい番号を持つノードから小さい番号を持つノードへのリンクが存在しないへのリンクが存在しないようにノードを順序付けられることは等価
         \begin{itemize}
