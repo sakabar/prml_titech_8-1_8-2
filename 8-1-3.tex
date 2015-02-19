@@ -1,11 +1,11 @@
-\begin{frame}{離散変数}
+\begin{frame}{8.1.3と8.1.4の概要}
  \begin{itemize}
   \item 指数型分布族(2.4節)は複雑な確率分布を構築するための基本構成要素として利用される
   \item グラフィカルモデルは、これらの構成要素がどのように接続されているかを表現するための便利な枠組みを提供する
   \item 有向グラフの親子対が共役関係(同じような分布)になるように分布を選べば、そのモデルは非常に良い性質を持つ
         \begin{itemize}
-         \item 特に親ノードと子ノードが共に\alert{離散変数}
-         \item または、親ノードと子ノードが共に\alert{ガウス変数}
+         \item 親ノードと子ノードが共に\alert{離散変数}(8.1.3)
+         \item 親ノードと子ノードが共に\alert{ガウス変数}(8.1.4)
         \end{itemize}
  \end{itemize}
 \end{frame}
@@ -29,48 +29,80 @@
   \item この分布は$K^2-1$個のパラメータに支配される
   \item 変数が2でなく$M$個のときは、$K^M-1$個のパラメータ
         \begin{itemize}
-         \item \structure{指数オーダーorz}
+         \item \structure{指数オーダー}orz
         \end{itemize}
  \end{itemize}
 \end{frame}
 
-\begin{frame}{リンクを仮定した時(いるか?)}
- \begin{itemize}
-  \item %TODO 乗法定理を使った部分入れるか?
-  % \item 同時分布を$p(\bm{x_1},\bm{x_2}) = p(\bm{x_2}| \bm{x_1})p(\bm{x_1})$の形に因数分解すると、パラメータの総数は
- \end{itemize}
-\end{frame}
+%\begin{frame}{リンクを仮定した時(いるか?)}
+% \begin{itemize}
+%  \item %TODO 乗法定理を使った部分入れるか?
+%  \item 同時分布を$p(\bm{x_1},\bm{x_2}) = p(\bm{x_2}| \bm{x_1})p(\bm{x_1})$の形に因数分解すると、パラメータの総数は
+  % \end{itemize}
+ %\end{frame}
 
-\begin{frame}{どうするのか?}
- \begin{itemize}
-  \item グラフに制約を加えることで、パラメータ数を減らす
-  \item 変数$\bm{x_1}, \bm{x_2}$が独立であると仮定すると、全パラメータ数は$2(K-1)$である
-        \begin{itemize}
-         \item この場合、$\bm{x_1}$と$\bm{x_2}$を結ぶリンクが除去されたことになる
-        \end{itemize}
-  \item 一般に、$M$個の独立な$K$状態離散変数上の分布の場合、全パラメータ数は$M(K-1)$
-        \begin{itemize}
-         \item \alert{線形オーダになった!}
-        \end{itemize}
-  \item ただし、この操作によって表現可能な分布のクラスは制限される
- \end{itemize}
-\end{frame}
+ \begin{frame}{どうするのか?}
+  \begin{itemize}
+   \item グラフに制約を加えることで、パラメータ数を減らす
+         \begin{itemize}
+          \item 独立の仮定→このスライド
+          \item 連鎖表現
+          \item パラメータ共有(結合)
+          \item パラメトリックモデルの利用
+         \end{itemize}
+   \item 変数$\bm{x_1}, \bm{x_2}$が独立であると仮定すると、全パラメータ数は$2(K-1)$である
+         \begin{itemize}
+          \item この場合、$\bm{x_1}$と$\bm{x_2}$を結ぶリンクが除去されたことになる
+         \end{itemize}
+   \item 一般に、$M$個の独立な$K$状態離散変数上の分布の場合、全パラメータ数は$M(K-1)$
+         \begin{itemize}
+          \item \alert{線形オーダ}になった!
+         \end{itemize}
+   \item ただし、この操作によって表現可能な分布のクラスは制限される
+  \end{itemize}
+  \begin{center}
+   \includegraphics[width=4cm]{./figure/Figure8.9a.eps}
 
-\begin{frame}{チェイン}
- \begin{itemize}
-  \item %TODO 図8.10の挿入
- \end{itemize}
-\end{frame}
+   \includegraphics[width=4cm]{./figure/Figure8.9b.eps}
+  \end{center}
+ \end{frame}
 
-\begin{frame}{パラメータの共有(結合)}
- \begin{itemize}
-  \item %TODO 図8.11と図8.12の挿入
- \end{itemize}
-\end{frame}
+ \begin{frame}{連鎖表現}
+  \begin{itemize}
+   \item 全結合グラフと、リンクが全く無いグラフの中間的な結合度合いを持つグラフは、全く一般的な同時分布よりは指定すべきパラメータ数が少なく、また完全に因数分解可能なものよりは一般的な分布を表現できる
+         \begin{center}
+          \includegraphics[width=7cm]{./figure/Figure8.10.eps}
+         \end{center}
 
-\begin{frame}{パラメトリックモデルの利用}
- \begin{itemize}
-  \item %TODO 式8.10あたりか?
- \end{itemize}
-\end{frame}
+   \item パラメータ数は、
+         \begin{eqnarray*}
+          K - 1 + (M-1)K(K-1)
+         \end{eqnarray*}
+         $K$に対して2次的、連鎖の長さ$M$に関して(指数的ではなく)線形に増加
+  \end{itemize}
+ \end{frame}
+
+ \begin{frame}{パラメータの共有(結合)}
+  \begin{center}
+   \includegraphics[width=6cm]{./figure/Figure8.11.eps}
+  \end{center}
+  \begin{itemize}
+   \item 図において、すべての条件付き分布$p(x_i|x_{i-1})$が同一のパラメータに支配されると仮定すると、
+  \end{itemize}
+  \begin{center}
+   \includegraphics[width=6cm]{./figure/Figure8.12.eps}
+  \end{center}
+ \end{frame}
+
+ \begin{frame}{パラメトリックモデルの利用}
+  \begin{itemize}
+   \item %TODO 式8.10あたりか?
+  \end{itemize}
+  \begin{eqnarray*}
+   p(y=1|x_1,...,x_M) = \sigma \left( w_0 + \sum_{i=1}^{M}w_ix_i\right) = \sigma (\bm{w}^{\mathrm{T}}\bm{x})
+  \end{eqnarray*}
+  \begin{center}
+   \includegraphics[width=6cm]{./figure/Figure8.13.eps}
+  \end{center}
+ \end{frame}
 
