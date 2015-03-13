@@ -1,5 +1,60 @@
-% \begin{frame}{線形ガウスモデル}
-%  \begin{itemize}
-%   \item 理解が不足している。
-%  \end{itemize}
-% \end{frame}
+\begin{frame}{線形ガウスモデル}
+ \begin{itemize}
+  \item この節では、要素変数上の線形ガウスモデルに対応する有向グラフによって、多変量ガウス分布を表現する方法を示す
+  \item 対角共分散を持つガウス分布と一般のガウス分布とを両極端とするような興味ある構造を分布に持たせる
+  \item 線形ガウスモデルの利用例
+        \begin{itemize}
+         \item 確率主成分分析
+         \item 因子分析
+         \item 線形動的システム
+        \end{itemize}
+ \end{itemize}
+\end{frame}
+
+\begin{frame}{同時分布}
+ \begin{itemize}
+  \item $D$個の変数上の任意の有向非循環グラフを考える
+  \item 線形ガウスモデルでは、分布の平布はノード$i$の親ノード$pa_i$状態の線形結合
+        \begin{eqnarray*}
+         p(x_i|pa_i) = \mathcal{N} \left(x_i \sum_{j \in pa_i}w_{ij}x_j + b_i, v_i \right)
+        \end{eqnarray*}
+  \item 同時分布の谷万客、グラフに含まれるすべてのノード上の条件付き分布の積の対数
+        \begin{eqnarray*}
+         \ln p(\bm{x}) &=& \sum_{i=1}^{D}\ln p(x_i | pa_i)\\
+         &= & -\sum_{i=1}^{D}\frac{1}{2v_i}(x_i - \sum_{j \in pa_i}w_{ij}x_j-b_i)^2 + \mathrm{const}
+        \end{eqnarray*}
+  \item この式は$\mathrm{x}$の成分に関する2次関数→\alert{同時分布$p(\mathrm{x})$は多変量ガウス分布}
+ \end{itemize}
+\end{frame}
+
+\begin{frame}{平均と分散}
+ \begin{itemize}
+  \item この同時分布の平均と分散は再帰的に決められる
+  \item 各変数$x_i$は以下のように書ける
+        \begin{eqnarray*}
+         x_i = \sum_{j \in pa_i}w_{ij}x_j + b_i + \sqrt{v_i}\epsilon_i
+        \end{eqnarray*}
+  \item この期待値を取ると
+        \begin{eqnarray*}
+         \mathbb{E}[x_i] = \sum_{j \in pa_i}w_ij\mathbb{E}[x_j]+b_i
+        \end{eqnarray*}
+  \item この式をグラフ上の最も小さいノードから順番に再帰的に計算することで、$\mathbb{E}[\mathrm[x]]=(\mathbb{E}[x_1], ... , \mathbb{E}[x_D])^{\mathrm{T}}$の全成分の値が得られる
+ \end{itemize}
+\end{frame}
+
+\begin{frame}{共分散}
+ \begin{itemize}
+  \item 求めた$\mathbb{E}[x_i]$を利用する
+ \end{itemize}
+ \begin{eqnarray*}
+  x_i = \sum_{j \in pa_i}w_{ij}x_j + b_i + \sqrt{v_i}\epsilon_i
+ \end{eqnarray*}
+ \begin{eqnarray*}
+  \mathbb{E}[x_i] = \sum_{j \in pa_i}w_ij\mathbb{E}[x_j]+b_i
+ \end{eqnarray*}
+ \begin{eqnarray*}
+  \mathrm{cov}[x_i, x_j] &=& \mathbb{E}[(x_i-\mathbb{E}[x_i])-(x_j-\mathbb{E}[x_j])]\\
+  &= & \mathbb{E}\left[(x_i-\mathbb{E}[x_i])\left\{\sum_{k \in pa_j}w_{jk}(x_k-\mathbb{E}[x_k])+\sqrt{v_j}\epsilon_j \right\}\right]\\
+  &= & \sum_{k \in pa_j}w_{jk}\mathrm{cov}[x_i,x_k]+I_{ij}v_j
+ \end{eqnarray*}
+\end{frame}
