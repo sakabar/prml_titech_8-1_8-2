@@ -1,18 +1,149 @@
-% \begin{frame}{有向分離}
-%  \begin{itemize}
-%   \item 本節では、有向グラフにおける有向分離性について一般的な議論を行う。
-%   \item $A,B,C$それぞれを重複しない任意のノード集合とする
-%         \begin{itemize}
-%          \item 全部合わせたときにグラフ全体にならなくてもよい
-%         \end{itemize}
-%   \item 与えられた有向非循環グラフが条件付き独立性$A\Perp B|C$を示唆するかどうかを調べたい
-%   \item そのためには、$A$に属する任意のノードから$B$に属する任意のノードへのすべとの可能な経路を考える必要がある
-%   \item 以下の条件のうちいずれかを満たすノードを含む経路は遮断されていると言う
-%         \begin{enumerate}
-%          \item 集合$C$に含まれるノーであって、経路に含まれる矢印がそこでhead-to-tailあるいはtail-to-tailである
-%          \item 経路に含まれる矢印がそのノードでhead-to-tailであり、自身あるいはそのすべての子孫のいずれも集合$C$に含まれない
-%         \end{enumerate}
-%   \item すべての経路が遮断されていれば、$A$は$C$によって$B$から有向分離されていると言い、グラフの全変数上の同時分布は$A \Perp B|C$を満たす
-%   \item 具体例を入れようかなぁ %TODO
-%  \end{itemize}
-% \end{frame}
+\begin{frame}{有向分離}
+ \begin{itemize}
+  \item グラフの有向分離
+  \item $A,B,C$それぞれを重複しない任意のノード集合とする
+  \item 条件付き独立性$A\Perp B\ | \ C$を調べたい
+  \item $A$に属する任意のノードから$B$に属する任意のノードへの全ての可能な経路を考える必要がある
+ \end{itemize}
+\end{frame}
+
+\begin{frame}{経路の遮断}
+ \begin{itemize}
+  \item 以下の条件のうちいずれかを満たすノードを含む経路は遮断されていると言う
+        \begin{enumerate}
+         \item 集合$C$に含まれるノードであって、経路に含まれる矢印がそこでhead-to-tailあるいはtail-to-tailである
+         \item 経路に含まれる矢印がそのノードでhead-to-headであり、自身あるいはそのすべての子孫のいずれも集合$C$に含まれない
+        \end{enumerate}
+  \item すべての経路が遮断されていれば、$A$は$C$によって$B$から有向分離されていると言い、グラフの全変数上の同時分布は$A \Perp B\ | \ C$を満たす
+ \end{itemize}
+\end{frame}
+
+\begin{frame}{例1}
+ \includegraphics[width=4cm]{./figure/Figure8.22a.eps}
+ \begin{itemize}
+  \item 遮断する条件
+        \begin{enumerate}
+         \item 集合$C$に含まれるノードであって、経路に含まれる矢印がそこでhead-to-tailあるいはtail-to-tailである
+         \item 経路に含まれる矢印がそのノードでhead-to-headであり、自身あるいはそのすべての子孫のいずれも集合$C$に含まれない
+        \end{enumerate}
+  \item $a$から$b$への経路はノード$f$によって遮断されない
+        \begin{itemize}
+         \item $f$はtail-to-tail
+        \end{itemize}
+  \item $e$によっても遮断されない
+        \begin{itemize}
+         \item head-to-headだが子孫$c$が観測されている
+        \end{itemize}
+  \item 以上より、条件付き独立性$a \Perp b\ | \ c$はこのグラフからは導けない
+ \end{itemize}
+\end{frame}
+
+\begin{frame}{例2}
+ \includegraphics[width=4cm]{./figure/Figure8.22b.eps}
+ \begin{itemize}
+  \item $a$から$b$への経路はノード$f$によって遮断される
+        \begin{itemize}
+         \item ノード$f$はtail-to-tailであり、かつ観測されている
+        \end{itemize}
+  \item 条件付き独立性$a \Perp b\ | \ f$が成立
+ \end{itemize}
+\end{frame}
+
+\begin{frame}{独立同分布データの場合}
+ \includegraphics[width=4cm]{./figure/Figure8.23a.eps}
+ \begin{itemize}
+  \item 1変量ガウス分布の平均事後分布を得る問題
+        \begin{eqnarray*}
+         p(\mu, x) = p(x|\mu)p(\mu)
+        \end{eqnarray*}
+  \item $\mu$を条件付け変数と見なすと、任意の$x_i$から$x_{j \neq i}$への経路がtail-to-tailの観測済みノード$\mu$によって遮断される
+  \item $\mu$が与えられた下で、観測値$D=(x_1,...,x_N)$は独立
+ \end{itemize}
+ \begin{eqnarray*}
+  p(D|\mu) = \prod_{n=1}^Np(x_n|\mu)
+ \end{eqnarray*}
+\end{frame}
+
+\begin{frame}{独立同分布データの場合}
+ \includegraphics[width=4cm]{./figure/Figure8.23a.eps}
+ \begin{itemize}
+  \item 次に、$\mu$を消去した場合には観測値は独立ではない
+        \begin{eqnarray*}
+         p(D) = \int_{\infty}^{\infty}p(D|\mu)p(\mu)d\mu \neq  \prod_{n=1}^Np(x_n|\mu)
+        \end{eqnarray*}
+  \item 遮断する条件
+        \begin{enumerate}
+         \item \alert{集合$C$に含まれるノードであって}、経路に含まれる矢印がそこでhead-to-tailあるいはtail-to-tailである
+         \item 経路に含まれる矢印がそのノードでhead-to-headであり、自身あるいはそのすべての子孫のいずれも集合$C$に含まれない
+        \end{enumerate}
+ \end{itemize}
+\end{frame}
+
+\begin{frame}{図8.7の例}
+ \includegraphics[width=4cm]{./figure/Figure8.7.eps}
+ \begin{itemize}
+  \item $\hat{t}$から$t_n$に対する任意の経路において、$w$はtail-to-tailであるため、以下の条件付き独立性が成立
+        \begin{eqnarray*}
+         \hat{t} \Perp t_n \ | \ \mathrm{W}
+        \end{eqnarray*}
+  \item 一旦訓練データを利用して係数$\bm{w}$上の事後分布を決めてしまえば、訓練データ$t_n$を捨ててしまってよい
+ \end{itemize}
+\end{frame}
+
+\begin{frame}{ナイーブベイズモデル}
+ \includegraphics[width=4cm]{./figure/Figure8.24.eps}
+ \begin{itemize}
+  \item ナイーブベイズモデルのグラフ構造
+        \begin{itemize}
+         \item 観測変数$\bm{x}=(x_1,...,x_D)^{\mathrm{T}}$
+         \item クラスベクトル$\bm{z}=(z_1,...,z_K)$
+        \end{itemize}
+  \item $z$を観測すると、$x_i$と$x_{j \neq i}$との間の経路が遮断される(= 条件付き独立)
+        \begin{block}{ナイーブベイズ仮説}
+         \begin{itemize}
+          \item クラス$\bm{z}$で条件付けると入力変数$x_1,...,x_D$が互いに独立
+         \end{itemize}
+        \end{block}
+  \item $\bm{z}$を観測せずに$\bm{z}$について周辺化すると、$x_i$から$x_{j \neq i}$への経路の遮断が解かれる
+ \end{itemize}
+\end{frame}
+
+\begin{frame}{有向分離定理}
+ \begin{itemize}
+  \item 以下の2つの方法によって得られる分布の集合は等価
+        \begin{enumerate}
+         \item 同時分布の因数分解から得られる分布の集合
+               \begin{eqnarray*}
+                p(\bm{x}) = \prod_{k=1}^Kp(x_k|pa_k)
+               \end{eqnarray*}
+         \item グラフの経路遮断を調べて得られる分布の集合
+        \end{enumerate}
+        \begin{center}
+         \includegraphics[width=7cm]{./figure/Figure8.25.eps}
+        \end{center} 
+ \end{itemize}
+\end{frame}
+
+\begin{frame}{マルコフブランケット}
+ \begin{itemize}
+  \item $D$個のノードを持つグラフで表現される同時分布と、変数$x_i$に対応するノード上の、他ノード$x_{j \neq i}$で条件付けられた条件付き分布を考える
+        \begin{eqnarray*}
+         p(x_i|x_{\{j \neq i\}}) &=& \frac{p(x_1,...,x_D)}{\int p(x_1,...,x_D)dx_i}\\
+         & =& \frac{\prod_k p(x_k|pa_k)}{\int \prod_k p(x_k|pa_k) dx_i}
+        \end{eqnarray*}
+  \item 関数として$x_i$に依存しない任意の因子$p(x_k|pa_k)$は$x_i$に関する積分の外に出てキャンセル
+  \item 残るのは…
+        \begin{itemize}
+         \item ノード$x_i$自身の条件付き分布$p(x_i|pa_i)$ : \alert{ノード$x_i$の親に依存}
+         \item $x_i$を親に持つノード$x_k$の条件付き分布$p(x_k|pa_k)$ : \alert{ノード$x_i$の子とその共同親に依存}
+        \end{itemize}
+ \end{itemize}
+\end{frame}
+
+\begin{frame}{マルコフブランケット}
+ \begin{itemize}
+  \item 次の図のような、あるノードの親、子、および共同親からなるノード集合を\alert{マルコフブランケット}と呼ぶ
+  \item ノード$x_i$のマルコフブランケットは、$x_i$を残りのグラフから孤立させるためのノードの最小集合
+ \end{itemize}
+ \includegraphics[width=5cm]{./figure/Figure8.26.eps}
+\end{frame}
