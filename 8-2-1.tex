@@ -146,8 +146,41 @@
  \end{itemize}
 \end{frame}
 
-% \begin{frame}{弁明現象}
-%  \begin{itemize}
-%   \item 例を入れて話す…?
-%  \end{itemize}
-% \end{frame}
+\begin{frame}{弁明現象}
+ \includegraphics[width=5cm]{./figure/Figure8.21a.eps}
+ \begin{itemize}
+  \item 車の燃料タンクモデルを考える
+        \begin{itemize}
+         \item バッテリの状態 B\{1,0\}
+         \item 燃料タンクの状態 F\{1,0\}
+         \item 電動燃料計の状態 G \{1,0\}
+        \end{itemize}
+  \item 何も観測していない時、$p(F=0)= 0.1$
+ \end{itemize}
+\end{frame}
+
+\begin{frame}{弁明現象}
+ \includegraphics[width=5cm]{./figure/Figure8.21b.eps}
+ \begin{itemize}
+  \item 何も観測していない時、$p(F=0)= 0.1$
+  \item Gが0であることを観測した後、$p(F=0|G=0)\simeq 0.257$
+
+        (\alert{確率が上がった})
+ \end{itemize}
+\end{frame}
+
+\begin{frame}{弁明現象}
+ \includegraphics[width=5cm]{./figure/Figure8.21c.eps}
+ \begin{itemize}
+  \item 何も観測していない時、$p(F=0)= 0.1$
+  \item Gが0であることを観測した後、$p(F=0|G=0)\simeq 0.257$
+  \item さらに、Bが0であることを観測すると、$p(F=0|G=0, B=0)\simeq 0.111$
+
+        (\alert{確率が下がった})
+  \item バッテリが切れているという事実が、燃料計が空を指していることを「弁明」している
+        \begin{itemize}
+         \item 「燃料が切れている可能性は低い。なぜなら、すでにバッテリが切れているということが電動燃料計がゼロになっていることの理由になっているから」
+        \end{itemize}
+ \end{itemize}
+\end{frame}
+
