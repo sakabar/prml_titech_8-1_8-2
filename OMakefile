@@ -21,3 +21,8 @@ TEXDEPS[]   =
 LaTeXDocument(slide, slide)
 
 .DEFAULT: slide.pdf slide.dvi
+
+.PHONY: clean
+
+clean:
+	rm -f *.aux *.dvi *.log *.nav *.out *.pdf *.snm *.toc
