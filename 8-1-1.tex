@@ -1,9 +1,15 @@
 \begin{frame}{8.1.1 例: 多項式曲線フィッティング}
  \begin{itemize}
   \item 1.2.6節で紹介したベイズ多項式回帰モデルをグラフィカルモデルで表すと、図のようになる
-        %TODO 図8.3の挿入
-  \item ここで、複数のノードをコンパクトに表現するために、\alert{プレート}を導入する
-        %TODO 図8.4の挿入
+        \begin{center}
+         \includegraphics[width=5cm]{./figure/Figure8.3.eps}
+        \end{center}
+  \item ここで、複数のノードをコンパクトに表現するために、
+
+        \alert{プレート}を導入する
+        \begin{center}
+         \includegraphics[width=5cm]{./figure/Figure8.4.eps}
+        \end{center}
  \end{itemize}
 \end{frame}
 
@@ -14,13 +20,19 @@
   \item 機械学習やパターン認識問題では、多くの場合、確率変数のうちいくつかを特定の観測値に対応させる。観測した確率変数は、グラフ上では塗りつぶされた円で表現する
   \item 一方、観測されていないノードを潜在変数と呼ぶ
  \end{itemize}
+ \begin{center}
+  \includegraphics[width=4cm]{./figure/Figure8.5.eps}
+  \includegraphics[width=4cm]{./figure/Figure8.6.eps}
+ \end{center}
 \end{frame}
 
 \begin{frame}{複雑な例}
  \begin{eqnarray*}
   p(\hat{t}, \bm{t}, w| \hat{x}, \bm{x}, \alpha , \sigma^2) = \left[\prod_{n=1}^{N}p(t_n|x_n, \bm{w}, \sigma^2)\right]p(\bm{w}|\alpha)p(\hat{t}|\hat{x}, \bm{w}, \sigma^2)
  \end{eqnarray*}
- %TODO 図8.7の挿入
+ \begin{center}
+  \includegraphics[width=4cm]{./figure/Figure8.7.eps}
+ \end{center}
  \begin{itemize}
   \item グラフィカルモデルと見くらべると、たしかに依存関係を簡潔に表すことができている
   \item ただし、モデルの具体的な中身は、式を見ないとわからない

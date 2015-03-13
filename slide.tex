@@ -1,10 +1,13 @@
 \documentclass[dvipdfm, t]{beamer}
-% \usepackage{amsmath}
+\usepackage{amsmath}
 \usepackage{bm}
 \usepackage{txfonts}
 % \usepackage{graphicx}
 % \usepackage{hyperref}
 % \usepackage{url}
+
+%テーマの設定
+\usetheme{Boadilla}
 
 %条件付き独立でない、という記号
 \newcommand{\nPerp}{\Perp\hspace{-.95em}/}
@@ -20,6 +23,7 @@
 % \date{February 26, 2015}
 \date{\today}
 
+
 \setbeamertemplate{footline}[frame number]
 \setbeamerfont{footline}{size=\small,series=\bfseries}
 \setbeamercolor{footline}{fg=black,bg=black}
@@ -27,6 +31,11 @@
 %数式をTeXの元々のフォントにする
 \usefonttheme{professionalfonts}
 
+%フッダーをスライド番号だけにする
+\setbeamertemplate{footline}[frame number]
+
+%箇条書きの記号に丸を使う
+\useinnertheme{circles}
 \begin{document}
 \maketitle
 
@@ -42,7 +51,7 @@
  \begin{frame}{もくじ}
   \tableofcontents[currentsection]
  \end{frame}
- \input{8-1}
+ \input{8-1-0}
 
  \section{8.1.1 例:多項式曲線フィッティング}
  \begin{frame}{もくじ}
@@ -72,7 +81,7 @@
  \begin{frame}{もくじ}
   \tableofcontents[currentsection]
  \end{frame}
- \input{8-2}
+ \input{8-2-0}
 
  \section{8.2.1 3つのグラフの例}
  \begin{frame}{もくじ}

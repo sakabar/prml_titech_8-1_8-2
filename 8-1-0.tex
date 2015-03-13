@@ -4,8 +4,11 @@
         \begin{itemize}
          \item 加法定理
          \item 乗法定理
-               %TODO 加法定理と乗法定理の式を載せる
         \end{itemize}
+        \begin{eqnarray*}
+         p(X) &= &\sum_{Y}p(X,Y)\\
+         p(X,Y) &=& p(Y|X)p(X)
+        \end{eqnarray*}
   \item → どんなに複雑な確率的推論・学習方法も、これらによって分解することができる
   \item そこでグラフィカルモデルですよ
         \begin{enumerate}
@@ -17,12 +20,16 @@
 \end{frame}
 
 \begin{frame}{ことば}
- %TODO 分かりやすい図の挿入
  \begin{itemize}
   \item リンク
   \item ノード
   \item ベイジアンネットワーク(有向グラフィカルモデル)
+
+        \includegraphics[width=3cm]{./figure/Figure8.1.eps}
+
   \item マルコフ確率場(無向グラフィカルモデル)
+
+        \includegraphics[width=4cm]{./figure/Figure8.27.eps}
  \end{itemize}
 \end{frame}
 
@@ -38,7 +45,9 @@
   \item このような分解は、任意の同時分布に対して常に可能
   \item 左辺は$a,b,c$対称だが、右辺は対称でないことに注意
  \end{itemize}
- %TODO 親ノード、子ノード、図の追加
+ \begin{center}
+  \includegraphics[width=4cm]{./figure/Figure8.1.eps}
+ \end{center}
 \end{frame}
 
 \begin{frame}{$K$変数の場合}
@@ -55,17 +64,15 @@
   \item 全結合
   \item グラフはリンクが存在しないことを通して、分布のクラスに関する情報を表現する
  \end{itemize}
- %TODO K変数のときの図?
 \end{frame}
 
 \begin{frame}{同時確率分布を条件付き分布の積で表す}
- %TODO 図8.2の挿入
- \begin{itemize}
-  \item 例
- \end{itemize}
  \begin{eqnarray*}
-  p(x_1)p(x_2)p(x_3)p(x_4|x_1,x_2,x_3)p(x_5|x_1,x_3)p(x_6)p(x_4)p(x_7|x_4,x_5)
+  p(x_1)p(x_2)p(x_3)p(x_4|x_1,x_2,x_3)p(x_5|x_1,x_3)p(x_6|x_4)p(x_7|x_4,x_5)
  \end{eqnarray*}
+ \begin{center}
+  \includegraphics[width=3cm]{./figure/Figure8.2.eps}
+ \end{center}
  \begin{itemize}
   \item $K$個のノードを持つグラフに対応する同時分布は次の式で与えられる。ここで、$pa_k$は$x_k$の親ノード集合
  \end{itemize}
@@ -75,20 +82,24 @@
 \end{frame}
 
 \begin{frame}{説明}
+ \begin{eqnarray*}
+  p(x_1)p(x_2)p(x_3)p(x_4|x_1,x_2,x_3)p(x_5|x_1,x_3)p(x_6|x_4)p(x_7|x_4,x_5)
+ \end{eqnarray*}
+ \begin{center}
+  \includegraphics[width=3cm]{./figure/Figure8.2.eps}
+ \end{center}
  % \begin{eqnarray*}
  %  p(\bm{x}) = \prod_{k=1}^{K}p(x_k|pa_k)
    % \end{eqnarray*}
  \begin{itemize}
-  \item この等式は、与えられた有向グラフィカルモデルに対応する同時分布の分解特性を表現
-  \item 各ノードは1つの変数だけでなく、変数集合やベクトル値変数を表現させることも可
+  % \item この等式は、与えられた有向グラフィカルモデルに対応する同時分布の分解特性を表現
+  % \item 各ノードは1つの変数だけでなく、変数集合やベクトル値変数を表現させることも可
   \item ここでの有向グラフは有向閉路を持たないという制約を満たす(有向非循環グラフ, DAG)
-  \item 有向閉路を持たないことと、大きい番号を持つノードから小さい番号を持つノードへのリンクが存在しないへのリンクが存在しないようにノードを順序付けられることは等価(演習8.2)
+  \item 有向閉路を持たないことと、大きい番号を持つノードから小さい番号を持つノードへのリンクが存在しないへのリンクが存在しないようにノードを順序付けられることは等価
         \begin{itemize}
-         \item → 次スライドで軽く説明
+         \item (演習8.2) → 次スライドで軽く説明
         \end{itemize}
  \end{itemize}
- %TODO 演8.1,8.2を解いてスライドに入れる
- %TODO 菅原さんの資料を確認すること
 \end{frame}
 
 \begin{frame}{演習8.2 解}

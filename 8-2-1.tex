@@ -1,16 +1,27 @@
 \begin{frame}{3つのグラフの例}
  \begin{itemize}
-  \item 有向グラフの条件付き独立性を考えるため、ノードを3つだけ持つ簡単な3種類のグラフについて考える %TODO 図8.15
+  \item 有向グラフの条件付き独立性を考えるため、ノードを3つだけ持つ簡単な3種類のグラフについて考える
         \begin{itemize}
          \item tail-to-tail 型
+
+               \includegraphics[width=4cm]{./figure/Figure8.15.eps}
+
          \item head-to-tail 型
+
+               \includegraphics[width=4cm]{./figure/Figure8.17.eps}
+
          \item head-to-head 型
+
+               \includegraphics[width=4cm]{./figure/Figure8.19.eps}
+
         \end{itemize}
  \end{itemize}
 \end{frame}
 
 \begin{frame}{tail-to-tail型}
- %TODO 図8.15の挿入
+ \begin{center}
+  \includegraphics[width=4cm]{./figure/Figure8.15.eps}
+ \end{center}
  \begin{itemize}
   \item このグラフに対応する同時分布は以下の式で表される
         \begin{eqnarray*}
@@ -28,6 +39,9 @@
 \end{frame}
 
 \begin{frame}{tail-to-tail型}
+ \begin{center}
+  \includegraphics[width=4cm]{./figure/Figure8.15.eps}
+ \end{center}
  \begin{itemize}
   \item 一方、変数$c$で条件付けてみると、
         \begin{eqnarray*}
@@ -39,13 +53,16 @@
          a \Perp b \ | \ c
         \end{eqnarray*}
         が導出された
-  \item ノード$c$を経由する、ノード$a$からノード$b$までの経路を考えれば、この結果をグラフ上で簡潔に説明できる。
-  \item ノード$c$はこの経路に関して\alert{tail-to-tail}であると言われる
-  \item ノード$a$と$b$とを結ぶこのような経路が存在すると$a$と$b$は独立にはならない。しかし、図のようにノード$c$に関して条件付ければ、この条件付きノードは$a$から$b$への経路を遮断して$a$と$b$とを(条件付き)独立にする
+  % \item ノード$c$を経由する、ノード$a$からノード$b$までの経路を考えれば、この結果をグラフ上で簡潔に説明できる。
+  % \item ノード$c$はこの経路に関して\alert{tail-to-tail}であると言われる
+  % \item ノード$a$と$b$とを結ぶこのような経路が存在すると$a$と$b$は独立にはならない。しかし、図のようにノード$c$に関して条件付ければ、この条件付きノードは$a$から$b$への経路を遮断して$a$と$b$とを(条件付き)独立にする
  \end{itemize}
 \end{frame}
 
 \begin{frame}{head-to-tail型}
+ \begin{center}
+  \includegraphics[width=4cm]{./figure/Figure8.17.eps}
+ \end{center}
  \begin{eqnarray*}
   p(a,b,c) = p(a)p(c|a)p(b|c)
  \end{eqnarray*}
@@ -63,6 +80,9 @@
 \end{frame}
 
 \begin{frame}{head-to-tail型}
+ \begin{center}
+  \includegraphics[width=4cm]{./figure/Figure8.17.eps}
+ \end{center}
  \begin{itemize}
   \item 次に、ノード$c$で条件付けると
         \begin{eqnarray*}
@@ -76,13 +96,16 @@
          a \Perp b | c
         \end{eqnarray*}
         が導かれる
-  \item これらの結果をグラフ上で説明できる。ノード$c$はノード$a$からノード$b$への経路に関して\alert{head-to-tail}である
-  \item このような経路はノード$a$とノード$b$をつないで従属関係をもたらす
-  \item しかし、ノード$c$を観測すると、$a$から$b$への経路を遮断し、条件付き独立性$a \Perp b | c$が成立する つ成立する
+  % \item これらの結果をグラフ上で説明できる。ノード$c$はノード$a$からノード$b$への経路に関して\alert{head-to-tail}である
+  % \item このような経路はノード$a$とノード$b$をつないで従属関係をもたらす
+  % \item しかし、ノード$c$を観測すると、$a$から$b$への経路を遮断し、条件付き独立性$a \Perp b | c$が成立する つ成立する
  \end{itemize}
 \end{frame}
 
-\begin{frame}{head-to-head}
+\begin{frame}{head-to-head型}
+ \begin{center}
+  \includegraphics[width=4cm]{./figure/Figure8.19.eps}
+ \end{center}
  \begin{itemize}
   \item 最後に、第3の例について考える
         \begin{eqnarray*}
@@ -94,6 +117,14 @@
          & & p(a)p(b)
         \end{eqnarray*}
         を得る。よって先の2例とは異なり、どの変数も観測されていないとき$a$と$b$とが独立であることがわかる。この結果を$a \Perp b | \emptyset$と書く
+ \end{itemize}
+\end{frame}
+
+\begin{frame}{head-to-head型}
+ \begin{center}
+  \includegraphics[width=4cm]{./figure/Figure8.19.eps}
+ \end{center}
+ \begin{itemize}
   \item 次に、$c$で条件付けられたときは、
         \begin{eqnarray*}
          p(a,b|c) &=& \frac{p(a,b,c)}{p(c)}\\
@@ -101,16 +132,10 @@
         \end{eqnarray*}
         これは一般に積$p(a|c)p(b|c)$の形に因数分解できないため、$a \nPerp \ b \ | \ c$である
   \item このように、第3の例は先の2例とは反対の振る舞いをする
-  \item ノード$c$は$a$から$b$への経路に関して\alert{head-to-head}であると言われる
-  \item ノード$c$が観測されていないとき、このノードは経路を遮断して変数$a$と$b$とを独立にする
-  \item しかし$c$に関する条件付けにより、経路の遮断が解かれて、$a$と$b$の間に依存関係がもたらされる
-  \item もしもhead-to-headノードか、あるいはその子孫のいずれかが観測されれば、この経路の遮断は解かれる(演9.10)
- \end{itemize}
-\end{frame}
-
-\begin{frame}{head-to-head}
- \begin{itemize}
-  \item
+  % \item ノード$c$は$a$から$b$への経路に関して\alert{head-to-head}であると言われる
+  % \item ノード$c$が観測されていないとき、このノードは経路を遮断して変数$a$と$b$とを独立にする
+  % \item しかし$c$に関する条件付けにより、経路の遮断が解かれて、$a$と$b$の間に依存関係がもたらされる
+  % \item もしもhead-to-headノードか、あるいはその子孫のいずれかが観測されれば、この経路の遮断は解かれる(演9.10)
  \end{itemize}
 \end{frame}
 
@@ -122,7 +147,40 @@
 \end{frame}
 
 \begin{frame}{弁明現象}
+ \includegraphics[width=5cm]{./figure/Figure8.21a.eps}
  \begin{itemize}
-  \item 例を入れて話すかー?
+  \item 車の燃料タンクモデルを考える
+        \begin{itemize}
+         \item バッテリの状態 B\{1,0\}
+         \item 燃料タンクの状態 F\{1,0\}
+         \item 電動燃料計の状態 G \{1,0\}
+        \end{itemize}
+  \item 何も観測していない時、$p(F=0)= 0.1$
  \end{itemize}
 \end{frame}
+
+\begin{frame}{弁明現象}
+ \includegraphics[width=5cm]{./figure/Figure8.21b.eps}
+ \begin{itemize}
+  \item 何も観測していない時、$p(F=0)= 0.1$
+  \item Gが0であることを観測した後、$p(F=0|G=0)\simeq 0.257$
+
+        (\alert{確率が上がった})
+ \end{itemize}
+\end{frame}
+
+\begin{frame}{弁明現象}
+ \includegraphics[width=5cm]{./figure/Figure8.21c.eps}
+ \begin{itemize}
+  \item 何も観測していない時、$p(F=0)= 0.1$
+  \item Gが0であることを観測した後、$p(F=0|G=0)\simeq 0.257$
+  \item さらに、Bが0であることを観測すると、$p(F=0|G=0, B=0)\simeq 0.111$
+
+        (\alert{確率が下がった})
+  \item バッテリが切れているという事実が、燃料計が空を指していることを「弁明」している
+        \begin{itemize}
+         \item 「燃料が切れている可能性は低い。なぜなら、すでにバッテリが切れているということが電動燃料計がゼロになっていることの理由になっているから」
+        \end{itemize}
+ \end{itemize}
+\end{frame}
+
