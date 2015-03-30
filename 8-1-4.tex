@@ -14,11 +14,11 @@
 \begin{frame}{同時分布}
  \begin{itemize}
   \item $D$個の変数上の任意の有向非循環グラフを考える
-  \item 線形ガウスモデルでは、分布の平布はノード$i$の親ノード$pa_i$状態の線形結合
+  \item 線形ガウスモデルでは、分布の平均はノード$i$の親ノード$pa_i$状態の線形結合
         \begin{eqnarray*}
          p(x_i|pa_i) = \mathcal{N} \left(x_i \sum_{j \in pa_i}w_{ij}x_j + b_i, v_i \right)
         \end{eqnarray*}
-  \item 同時分布の谷万客、グラフに含まれるすべてのノード上の条件付き分布の積の対数
+  \item 同時分布の対数は、グラフに含まれるすべてのノード上の条件付き分布の積の対数
         \begin{eqnarray*}
          \ln p(\bm{x}) &=& \sum_{i=1}^{D}\ln p(x_i | pa_i)\\
          &= & -\sum_{i=1}^{D}\frac{1}{2v_i}(x_i - \sum_{j \in pa_i}w_{ij}x_j-b_i)^2 + \mathrm{const}
@@ -50,10 +50,10 @@
   x_i = \sum_{j \in pa_i}w_{ij}x_j + b_i + \sqrt{v_i}\epsilon_i
  \end{eqnarray*}
  \begin{eqnarray*}
-  \mathbb{E}[x_i] = \sum_{j \in pa_i}w_ij\mathbb{E}[x_j]+b_i
+  \mathbb{E}[x_i] = \sum_{j \in pa_i}w_{ij}\mathbb{E}[x_j]+b_i
  \end{eqnarray*}
  \begin{eqnarray*}
-  \mathrm{cov}[x_i, x_j] &=& \mathbb{E}[(x_i-\mathbb{E}[x_i])-(x_j-\mathbb{E}[x_j])]\\
+  \mathrm{cov}[x_i, x_j] &=& \mathbb{E}[(x_i-\mathbb{E}[x_i])(x_j-\mathbb{E}[x_j])]\\
   &= & \mathbb{E}\left[(x_i-\mathbb{E}[x_i])\left\{\sum_{k \in pa_j}w_{jk}(x_k-\mathbb{E}[x_k])+\sqrt{v_j}\epsilon_j \right\}\right]\\
   &= & \sum_{k \in pa_j}w_{jk}\mathrm{cov}[x_i,x_k]+I_{ij}v_j
  \end{eqnarray*}
